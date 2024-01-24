@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
 
 	// locks
-    var time_lock = new TimeLock(30, "#submit_btn");
+    var time_lock = new TimeLock(60, "#submit_btn");
 
     // submit
     $(document).on("click", "#submit_btn", function(evt) {
