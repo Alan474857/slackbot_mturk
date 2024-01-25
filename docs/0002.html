@@ -13,13 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
-    <script src="../notify.js"></script>
+    <script src="https://alan474857.github.io/slackbot_mturk/notify.js"></script>
 
     <!-- Custom Code -->
-    <link rel="stylesheet" type="text/css" href="../conversation_evaluation.css">
-    <script type="text/javascript" src="../conversation_evaluation.js"></script>
-    <script type="text/javascript" src="../mturk.js"></script>
-    <script type="text/javascript" src="../lock.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.css">
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/mturk.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/lock.js"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -36,26 +36,24 @@
             Below, you will see a conversation between <span class="bold">an user</span> and <span class="bold">an AI (non-human) assistant</span>. 
             The user is reaching out to the assistant to ask for help for a question. 
             <div style="display:inline-block; height: 12px; width:100%;"> </div>
-            The user's question is: <span class="bold" style="text-decoration: underline;">"This housing market is wild. Is it going to last the next 4 years?"</span>
-            <div style="display:inline-block; height: 12px; width:100%;"> </div>
-            The remote assistant put the found information in a Google Doc. The user can view and edit the Google Doc at any time.
+            The user's question to the assistant is: <span class="bold" style="text-decoration: underline;">"This housing market is wild. Is it going to last the next 4 years?"</span>
         </div>
         <br>
 		<ul>
             <li>
                 Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Contribution, Informativeness, Repetitiveness, and Amount</span>.
                 <ul>
-                    <li><span class="bold">Helpfulness</span>: The user sent sufficient information in the requests. </li>
-                    <li><span class="bold">Contribution</span>: The user sent sufficient information in the requests. </li>
-                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Helpfulness</span>: The assistant gave helpful solution at the end of the conversation. </li>
+                    <li><span class="bold">Contribution</span>: Follow-up questions the assistant asked  contribute to providing well-suited question for the user's situation. </li>
+                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the conversation for the assistant to provide help. </li>
                     <li><span class="bold">Repetitiveness</span>: The user communicated with the remote assistant effectively. </li>
-                    <li><span class="bold">Amount</span>: The user expressed the needs or explained the questions with ease. </li>
+                    <li><span class="bold">Amount</span>: The amount of follow-up questions the assistant asked . </li>
                 </ul>
             </li>
             <li>
                 Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
                 <!-- (To present the full context, we show the assistant's responses, too.  -->
-                <span style="color: red; font-weight: 900;">we would like you to assess the quality of both the user's and assistant's messages</span>.) 
+                <span style="color: red; font-weight: 900;">We would like you to assess the quality of both the user's and assistant's messages</span>.
             </li>
             <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">30 seconds</span>.</li>
 		</ul>
@@ -113,7 +111,9 @@ While we aren't able to predict exactly what will happen in the next four years,
 
             <div class="radio_button" name="contribution">
             	<li class="radio_question">
-                    Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation.
+                    maxim of quantity
+                    The <span class="assistant-conv">assistant</span> asked the <span class="keyword">appropriate amount</span> of questions necessary for the purpose of the conversation.
+                    <!-- Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation. -->
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -124,7 +124,9 @@ While we aren't able to predict exactly what will happen in the next four years,
 
 			<div class="radio_button" name="informativeness">
             	<li class="radio_question">
-                    The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question.
+                    maxim of relation
+                    The <span class="assistant-conv">assistant</span> asked for information that is <span class="keyword">relevant</span> to the purpose of the conversation and omitted irrelevant information.
+                    <!-- The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question. -->
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -135,7 +137,9 @@ While we aren't able to predict exactly what will happen in the next four years,
 
             <div class="radio_button" name="repetitiveness">
             	<li class="radio_question">
-                    The conversation contains repeated information due to poor communication.
+                    maxim of manner
+                    The assistant's messages does not include repeating information and are clear and easy to understand.
+                    <!-- The conversation contains repeated information due to poor communication. -->
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -146,6 +150,8 @@ While we aren't able to predict exactly what will happen in the next four years,
 
             <div class="radio_button" name="amount">
             	<li class="radio_question">
+                    ambiguous and underspecified utterance handling
+                    Whenencounter ambiguous or underspecified utterace, they provide feedback to the user their interpretation of the utterance and how it was handled.
                     The <span class="assistant-conv">assistant</span> asked <span class="keyword">enough follow-up questions</span> to help answer the <span class="user-conv">user's</span> question sufficiently.
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
