@@ -33,29 +33,30 @@
 	<div id="instruction">
 		<h3>Instruction</h3>
         <div>
-            Below, you will see a conversation between <span class="bold">an user</span> and <span class="bold">an AI (non-human) assistant</span>. 
-            The user is reaching out to the assistant to ask for help for a question. 
+            Below, you will see a conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence (AI) assistant</span>. 
+            The user is asking the assistant for help with a question. 
             <div style="display:inline-block; height: 12px; width:100%;"> </div>
             The user's question to the assistant is: <span class="bold" style="text-decoration: underline;">"How much pain did you feel after wisdom tooth removal?"</span>
         </div>
         <br>
 		<ul>
             <li>
-                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Contribution, Informativeness, Repetitiveness, and Amount</span>.
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Quantity, Relevance, Repetitiveness, Clarity, and Ambiguity</span>.
                 <ul>
-                    <li><span class="bold">Helpfulness</span>: The assistant gave helpful solution at the end of the conversation. </li>
-                    <li><span class="bold">Contribution</span>: Follow-up questions the assistant asked  contribute to providing well-suited question for the user's situation. </li>
-                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the conversation for the assistant to provide help. </li>
-                    <li><span class="bold">Repetitiveness</span>: The user communicated with the remote assistant effectively. </li>
-                    <li><span class="bold">Amount</span>: The amount of follow-up questions the assistant asked . </li>
+                    <li><span class="bold">Helpfulness</span>: The assistant offer a helpful solution to the user's original question by the end of the conversation. </li>
+                    <li><span class="bold">Quantity</span>: The assistant request an appropriate amount of information from the user, necessary for the purpose of the conversation. </li>
+                    <li><span class="bold">Relevance</span>: The assistant seek information that is relevant to the purpose of the conversation from the user and avoid including irrelevant information. </li>
+                    <li><span class="bold">Repetitiveness</span>: The assistant's messages are free from repeating information. </li>
+                    <li><span class="bold">Clarity</span>: The assistant's messages are clear and easy to understand. </li>
+                    <li><span class="bold">Ambiguity</span>: The assistant inform the user when things were unclear in the conversation and explain how it understood uncertain messages. </li>
                 </ul>
             </li>
             <li>
                 Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
                 <!-- (To present the full context, we show the assistant's responses, too.  -->
-                <span style="color: red; font-weight: 900;">We would like you to assess the quality of both the user's and assistant's messages</span>.
+                <span style="color: red; font-weight: 900;">We would like you to assess the quality of the entire conversation</span>.
             </li>
-            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">30 seconds</span>.</li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">70 seconds</span>.</li>
 		</ul>
 	</div>
 
@@ -63,9 +64,9 @@
 	<div id="conversation">
 		<h3>Conversation</h3>	
         <div style="margin-bottom: 20px;">
-            This is the conversation between <span class="bold">a user</span> and <span class="bold">a remote assistant</span> on collecting information about 
-            <span class="bold" style="text-decoration: underline;">"{{topic}}"</span>
-            Please read the conversation carefully and focus on the <span class="user-conv">User</span> turns. 
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence(AI) assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"How much pain did you feel after wisdom tooth removal?"</span>
+            Please read the entire conversation carefully and focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
         </div>
 <div class="conversation_block user"><pre>How much pain did you feel after wisdom tooth removal?</pre></div>
 <div class="conversation_block assistant"><pre>Of course, I'd be happy to help you with your question. Just to clarify, have you recently had your wisdom teeth removed or are you planning to have this procedure done?</pre></div>
@@ -89,12 +90,12 @@
 	<div id="evaluation">
 		<h3>Rating</h3>
 		<div>
-            Rate the <span class="user-conv">User conversation</span> by selecting how much you agree with the statement about the conversation.
+            Rate the conversation by selecting how much you agree with the statement about the conversation.
 		</div>
 		<div>
             <div class="radio_button" name="helpfulness">
             	<li class="radio_question">
-                    The <span class="assistant-conv">assistant</span> provided <span class="keyword">helpful solution</span> to the original question the <span class="user-conv">user</span> aksed at the start of the conversation.
+                    The <span class="assistant-conv">assistant</span> offer a <span class="keyword">helpful solution</span> to the user's original question by the end of the conversation.
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -103,24 +104,20 @@
                 <div class="radio_answer" value="4">Strongly Agree</div>
         	</div>
 
-            <div class="radio_button" name="contribution">
+            <div class="radio_button" name="quantity">
             	<li class="radio_question">
-                    maxim of quantity
-                    The <span class="assistant-conv">assistant</span> asked the <span class="keyword">appropriate amount</span> of questions necessary for the purpose of the conversation.
-                    <!-- Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation. -->
+                    The <span class="assistant-conv">assistant</span> request an <span class="keyword">appropriate amount</span> of information from the user, necessary for the purpose of the conversation.
                 </li>
-                <div class="radio_answer" value="0">Strongly Disagree</div>
-                <div class="radio_answer" value="1">Disagree</div>
-                <div class="radio_answer" value="2">Neutral</div>
-                <div class="radio_answer" value="3">Agree</div>
-                <div class="radio_answer" value="4">Strongly Agree</div>
+                <div class="radio_answer" value="0">Too Little</div>
+                <div class="radio_answer" value="1">Insufficient</div>
+                <div class="radio_answer" value="2">Appropriate</div>
+                <div class="radio_answer" value="3">Sufficient</div>
+                <div class="radio_answer" value="4">Too Much</div>
         	</div>
 
-			<div class="radio_button" name="informativeness">
+			<div class="radio_button" name="relevance">
             	<li class="radio_question">
-                    maxim of relation
-                    The <span class="assistant-conv">assistant</span> asked for information that is <span class="keyword">relevant</span> to the purpose of the conversation and omitted irrelevant information.
-                    <!-- The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question. -->
+                    The <span class="assistant-conv">assistant</span> seek information that is <span class="keyword">relevant</span> to the purpose of the conversation from the user and avoid including irrelevant information.
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -131,9 +128,7 @@
 
             <div class="radio_button" name="repetitiveness">
             	<li class="radio_question">
-                    maxim of manner
-                    The assistant's messages does not include repeating information and are clear and easy to understand.
-                    <!-- The conversation contains repeated information due to poor communication. -->
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">free from repeating information</span>.
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
@@ -142,11 +137,20 @@
                 <div class="radio_answer" value="4">Strongly Agree</div>
         	</div>
 
-            <div class="radio_button" name="amount">
+            <div class="radio_button" name="clarity">
             	<li class="radio_question">
-                    ambiguous and underspecified utterance handling
-                    Whenencounter ambiguous or underspecified utterace, they provide feedback to the user their interpretation of the utterance and how it was handled.
-                    The <span class="assistant-conv">assistant</span> asked <span class="keyword">enough follow-up questions</span> to help answer the <span class="user-conv">user's</span> question sufficiently.
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">clear and easy to understand</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="ambiguity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> inform the user when things were <span class="keyword">unclear</span> in the conversation and <span class="keyword">explain how it understood uncertain messages</span>.
                 </li>
                 <div class="radio_answer" value="0">Strongly Disagree</div>
                 <div class="radio_answer" value="1">Disagree</div>
