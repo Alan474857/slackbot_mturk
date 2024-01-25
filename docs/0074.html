@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation Quality Measurement</title>
+    
+    <!-- Bootstrap - 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://alan474857.github.io/slackbot_mturk/notify.js"></script>
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" type="text/css" href="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.css">
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/mturk.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/lock.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+	<h1 style="text-align:center;">Evaluating the Quality of the Conversation</h1>
+
+	<div id="instruction">
+		<h3>Instruction</h3>
+        <div>
+            Below, you will see a conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence (AI) assistant</span>. 
+            The user is asking the assistant for help with a question. 
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The user's question to the assistant is: <span class="bold" style="text-decoration: underline;">"There's a game similar to space invaders with bug like aliens and it had boss battles from around 10 years ago and it had a 2 level free trial before paying for it. Does anyone know the name of the game?"</span>
+        </div>
+        <br>
+		<ul>
+            <li>
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Quantity, Relevance, Repetitiveness, Clarity, and Ambiguity</span>.
+                <ul>
+                    <li><span class="bold">Helpfulness</span>: The assistant offer a helpful solution to the user's original question by the end of the conversation. </li>
+                    <li><span class="bold">Quantity</span>: The assistant request an appropriate amount of information from the user, necessary for the purpose of the conversation. </li>
+                    <li><span class="bold">Relevance</span>: The assistant seek information that is relevant to the purpose of the conversation from the user and avoid including irrelevant information. </li>
+                    <li><span class="bold">Repetitiveness</span>: The assistant's messages are free from repeating information. </li>
+                    <li><span class="bold">Clarity</span>: The assistant's messages are clear and easy to understand. </li>
+                    <li><span class="bold">Ambiguity</span>: The assistant inform the user when things were unclear in the conversation and explain how it understood uncertain messages. </li>
+                </ul>
+            </li>
+            <li>
+                Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+                <!-- (To present the full context, we show the assistant's responses, too.  -->
+                <span style="color: red; font-weight: 900;">We would like you to assess the quality of the entire conversation</span>.
+            </li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">70 seconds</span>.</li>
+		</ul>
+	</div>
+
+
+	<div id="conversation">
+		<h3>Conversation</h3>	
+        <div style="margin-bottom: 20px;">
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence(AI) assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"There's a game similar to space invaders with bug like aliens and it had boss battles from around 10 years ago and it had a 2 level free trial before paying for it. Does anyone know the name of the game?"</span>
+            Please read the entire conversation carefully and focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+        </div>
+<div class="conversation_block user"><pre>There's a game similar to space invaders with bug like aliens and it had boss battles from around 10 years ago and it had a 2 level free trial before paying for it. Does anyone know the name of the game?</pre></div>
+<div class="conversation_block assistant"><pre>Sure, let's try to figure this out. Could you tell me what platform you played the game on? Was it on a gaming console, computer, or perhaps a mobile device?</pre></div>
+<div class="conversation_block user"><pre>it was on computer</pre></div>
+<div class="conversation_block assistant"><pre>Great, that helps narrow it down. Can you remember anything about the visual style or graphics of the game? Was it more modern and 3D, or did it have a retro, 2D look?</pre></div>
+<div class="conversation_block user"><pre>it was relatively modern and 3D</pre></div>
+<div class="conversation_block assistant"><pre>Thanks for the additional detail. Can you recall any specifics about the bosses in the game? For example, were they larger versions of the regular enemies, or entirely unique characters?</pre></div>
+<div class="conversation_block user"><pre>entirely unique characters</pre></div>
+<div class="conversation_block assistant"><pre>I see, unique boss characters can often be a defining feature of a game. Can you remember any other gameplay elements or mechanics that stood out? For instance, were there any unique power-ups, weapons, or special moves?</pre></div>
+<div class="conversation_block user"><pre>yes, each character had unique power-ups, weapons and special moves</pre></div>
+<div class="conversation_block assistant"><pre>Thanks for providing those details. Could you tell me more about the environment or settings in the game? Were the levels based in space, different planets, or perhaps a combination?</pre></div>
+<div class="conversation_block user"><pre>different planets, like Mars</pre></div>
+<div class="conversation_block assistant"><pre>Thanks for that information. I understand the levels were based on different planets. Was there any sort of storyline or narrative that you remember from the game? For example, was there a particular mission or goal you were trying to accomplish?</pre></div>
+<div class="conversation_block user"><pre>Nope, I forgot the mission or goal.</pre></div>
+<div class="conversation_block assistant"><pre>Understood. Lastly, do you recall any distinctive features about the bug-like aliens? For example, did they have a specific color, shape, or any unique behaviors?</pre></div>
+<div class="conversation_block user"><pre>yes, there were bug-like aliens and most of them were in black and white.</pre></div>
+<div class="conversation_block assistant"><pre>Based on all the information you've provided, it's a bit challenging to pinpoint the exact game you're referring to since quite a few games have similar features. However, one game that comes to mind is "Galaga Legions" which was released around 10 years ago and features gameplay similar to Space Invaders, with modern 3D graphics and boss battles. The game has unique characters with different weapons and power-ups, and it involves fighting off various alien species. 
+
+To answer your original question, although I can't confirm with certainty without more specific details, the game you're looking for might be "Galaga Legions". If this doesn't seem correct, I would recommend checking out lists of popular space shooter games from the same era to see if any of them look familiar.</pre></div>
+	</div>
+
+
+	<div id="evaluation">
+		<h3>Rating</h3>
+		<div>
+            Rate the conversation by selecting how much you agree with the statement about the conversation.
+		</div>
+		<div>
+            <div class="radio_button" name="helpfulness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> offer a <span class="keyword">helpful solution</span> to the user's original question by the end of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="quantity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> request an <span class="keyword">appropriate amount</span> of information from the user, necessary for the purpose of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Too Little</div>
+                <div class="radio_answer" value="1">Insufficient</div>
+                <div class="radio_answer" value="2">Appropriate</div>
+                <div class="radio_answer" value="3">Sufficient</div>
+                <div class="radio_answer" value="4">Too Much</div>
+        	</div>
+
+			<div class="radio_button" name="relevance">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> seek information that is <span class="keyword">relevant</span> to the purpose of the conversation from the user and avoid including irrelevant information.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="repetitiveness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">free from repeating information</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="clarity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">clear and easy to understand</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="ambiguity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> inform the user when things were <span class="keyword">unclear</span> in the conversation and <span class="keyword">explain how it understood uncertain messages</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+		</div>
+
+        <form id="mturk_form" name="mturk_form">
+            <input name="id" type="hidden" value="35">
+            <input name="user_id" type="hidden" value="14">
+            <input name="case" type="hidden" value="A">
+            <input name="answer" type="hidden">
+        </form>
+
+        <button class="btn btn-block btn-outline-primary btn-sm" id="submit_btn" disabled> Submit </button>
+
+	</div>
+
+</div>
+
+</body>
+</html>

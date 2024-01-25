@@ -1,0 +1,181 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation Quality Measurement</title>
+    
+    <!-- Bootstrap - 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://alan474857.github.io/slackbot_mturk/notify.js"></script>
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" type="text/css" href="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.css">
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/mturk.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/lock.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+	<h1 style="text-align:center;">Evaluating the Quality of the Conversation</h1>
+
+	<div id="instruction">
+		<h3>Instruction</h3>
+        <div>
+            Below, you will see a conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence (AI) assistant</span>. 
+            The user is asking the assistant for help with a question. 
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The user's question to the assistant is: <span class="bold" style="text-decoration: underline;">"Can someone explain the fastest way to learn Pokemon so I can understand what the hell my kids are talking about please?"</span>
+        </div>
+        <br>
+		<ul>
+            <li>
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Quantity, Relevance, Repetitiveness, Clarity, and Ambiguity</span>.
+                <ul>
+                    <li><span class="bold">Helpfulness</span>: The assistant offer a helpful solution to the user's original question by the end of the conversation. </li>
+                    <li><span class="bold">Quantity</span>: The assistant request an appropriate amount of information from the user, necessary for the purpose of the conversation. </li>
+                    <li><span class="bold">Relevance</span>: The assistant seek information that is relevant to the purpose of the conversation from the user and avoid including irrelevant information. </li>
+                    <li><span class="bold">Repetitiveness</span>: The assistant's messages are free from repeating information. </li>
+                    <li><span class="bold">Clarity</span>: The assistant's messages are clear and easy to understand. </li>
+                    <li><span class="bold">Ambiguity</span>: The assistant inform the user when things were unclear in the conversation and explain how it understood uncertain messages. </li>
+                </ul>
+            </li>
+            <li>
+                Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+                <!-- (To present the full context, we show the assistant's responses, too.  -->
+                <span style="color: red; font-weight: 900;">We would like you to assess the quality of the entire conversation</span>.
+            </li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">70 seconds</span>.</li>
+		</ul>
+	</div>
+
+
+	<div id="conversation">
+		<h3>Conversation</h3>	
+        <div style="margin-bottom: 20px;">
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a non-human Artificial Intelligence(AI) assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"Can someone explain the fastest way to learn Pokemon so I can understand what the hell my kids are talking about please?"</span>
+            Please read the entire conversation carefully and focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+        </div>
+<div class="conversation_block user"><pre>Can someone explain the fastest way to learn Pokemon so I can understand what the hell my kids are talking about please?</pre></div>
+<div class="conversation_block assistant"><pre>Of course, I'd be happy to help you get a grasp on Pokemon! Just to clarify, are your kids into the Pokemon card game, the video games, the animated series, or all of the above?</pre></div>
+<div class="conversation_block user"><pre>I am not sure, probably video games and animated series</pre></div>
+<div class="conversation_block assistant"><pre>Understood! Can you tell me if they have any favorite Pokemon or if there's a specific game or series they seem to be particularly interested in? This could help me provide more targeted advice.</pre></div>
+<div class="conversation_block user"><pre>I remember that there is a blue turtle but I don't know its name</pre></div>
+<div class="conversation_block assistant"><pre>The blue turtle you're referring to might be Squirtle, a popular water-type Pokemon. It's really helpful that you've started to notice some of their favorite characters! Have you noticed whether they engage more with the storylines and characters, or do they seem more interested in the strategy and competition of the games?</pre></div>
+<div class="conversation_block user"><pre>I think he is engaged with the competition of the games</pre></div>
+<div class="conversation_block assistant"><pre>Understood, thank you! Are they playing any competitive mode or league in the Pokemon game? For instance, the Battle Tower or online competitions against other players?</pre></div>
+<div class="conversation_block user"><pre>I am really not sure, I have no idea about it</pre></div>
+<div class="conversation_block assistant"><pre>That's okay! Last question: have you ever tried watching the anime series or playing the video games with your kids? This could help you understand better and also create some bonding time.</pre></div>
+<div class="conversation_block user"><pre>I have watched few episode from the anime series</pre></div>
+<div class="conversation_block assistant"><pre>To answer your original question, the quickest way to learn about Pokemon and understand what your kids are talking about would involve a combination of a few things.
+
+First, continuing to watch the animated series alongside your kids would be helpful. This would not only help you familiarize yourself with the characters, but it would also give you a sense of the storylines and themes that the series explores. The blue turtle you mentioned is indeed a Pokemon named Squirtle, and it's one of the original 151 Pokemon, which means it appears quite often in the series and games.
+
+Second, since your kids seem to be more engaged with the competitive side of the games, it could be beneficial for you to gain a basic understanding of how the Pokemon video game battles work. This involves understanding the types of Pokemon (like Squirtle being a water-type) and how these types interact in a rock-paper-scissors-like format. For instance, water-type Pokemon have an advantage over fire-types, but are weak against electric-types. Understanding this could help you grasp the strategic aspect your kids are enjoying.
+
+Lastly, you don't necessarily have to understand everything about Pokemon. Sometimes, just asking your kids to explain what they're excited about can be a great way for you to learn and for them to engage with you. Kids often love being the expert and teaching their parents about their interests. 
+
+I hope this helps you connect with your kids over Pokemon and understand their interest better!</pre></div>
+	</div>
+
+
+	<div id="evaluation">
+		<h3>Rating</h3>
+		<div>
+            Rate the conversation by selecting how much you agree with the statement about the conversation.
+		</div>
+		<div>
+            <div class="radio_button" name="helpfulness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> offer a <span class="keyword">helpful solution</span> to the user's original question by the end of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="quantity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> request an <span class="keyword">appropriate amount</span> of information from the user, necessary for the purpose of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Too Little</div>
+                <div class="radio_answer" value="1">Insufficient</div>
+                <div class="radio_answer" value="2">Appropriate</div>
+                <div class="radio_answer" value="3">Sufficient</div>
+                <div class="radio_answer" value="4">Too Much</div>
+        	</div>
+
+			<div class="radio_button" name="relevance">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> seek information that is <span class="keyword">relevant</span> to the purpose of the conversation from the user and avoid including irrelevant information.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="repetitiveness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">free from repeating information</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="clarity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant's messages</span> are <span class="keyword">clear and easy to understand</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="ambiguity">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> inform the user when things were <span class="keyword">unclear</span> in the conversation and <span class="keyword">explain how it understood uncertain messages</span>.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+		</div>
+
+        <form id="mturk_form" name="mturk_form">
+            <input name="id" type="hidden" value="16">
+            <input name="user_id" type="hidden" value="5">
+            <input name="case" type="hidden" value="A">
+            <input name="answer" type="hidden">
+        </form>
+
+        <button class="btn btn-block btn-outline-primary btn-sm" id="submit_btn" disabled> Submit </button>
+
+	</div>
+
+</div>
+
+</body>
+</html>
