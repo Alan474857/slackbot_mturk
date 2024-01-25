@@ -1,0 +1,173 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation Quality Measurement</title>
+    
+    <!-- Bootstrap - 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="../notify.js"></script>
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" type="text/css" href="../conversation_evaluation.css">
+    <script type="text/javascript" src="../conversation_evaluation.js"></script>
+    <script type="text/javascript" src="../mturk.js"></script>
+    <script type="text/javascript" src="../lock.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+	<h1 style="text-align:center;">Evaluating the Quality of the Conversation</h1>
+
+	<div id="instruction">
+		<h3>Instruction</h3>
+        <div>
+            Below, you will see a conversation between <span class="bold">an user</span> and <span class="bold">an AI (non-human) assistant</span>. 
+            The user is reaching out to the assistant to ask for help for a question. 
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The user's question is: <span class="bold" style="text-decoration: underline;">"This housing market is wild. Is it going to last the next 4 years?"</span>
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The remote assistant put the found information in a Google Doc. The user can view and edit the Google Doc at any time.
+        </div>
+        <br>
+		<ul>
+            <li>
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Contribution, Informativeness, Repetitiveness, and Amount</span>.
+                <ul>
+                    <li><span class="bold">Helpfulness</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Contribution</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Repetitiveness</span>: The user communicated with the remote assistant effectively. </li>
+                    <li><span class="bold">Amount</span>: The user expressed the needs or explained the questions with ease. </li>
+                </ul>
+            </li>
+            <li>
+                Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+                <!-- (To present the full context, we show the assistant's responses, too.  -->
+                <span style="color: red; font-weight: 900;">we would like you to assess the quality of both the user's and assistant's messages</span>.) 
+            </li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">30 seconds</span>.</li>
+		</ul>
+	</div>
+
+
+	<div id="conversation">
+		<h3>Conversation</h3>	
+        <div style="margin-bottom: 20px;">
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a remote assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"{{topic}}"</span>
+            Please read the conversation carefully and focus on the <span class="user-conv">User</span> turns. 
+        </div>
+<div class="conversation_block user"><pre>This housing market is wild. Is it going to last the next 4 years?</pre></div>
+<div class="conversation_block assistant"><pre>Absolutely, I'd be happy to help you understand the housing market better. To start, could you tell me a little bit more about your interest in the housing market? Are you planning to buy or sell a property?</pre></div>
+<div class="conversation_block user"><pre>I am planning to buy a hoyuse</pre></div>
+<div class="conversation_block assistant"><pre>Thank you for sharing your plans. When looking at buying a house, location plays a critical role. Are you planning to buy a house in a specific city or region?</pre></div>
+<div class="conversation_block user"><pre>I am thinking of buying a house in buffalo</pre></div>
+<div class="conversation_block assistant"><pre>Buffalo is a great city! Moving on, are you looking to buy a house for personal use or as an investment property?</pre></div>
+<div class="conversation_block user"><pre>yes</pre></div>
+<div class="conversation_block assistant"><pre>I understand, thank you. In terms of timeline, do you have a specific timeframe in mind for when you'd like to purchase the house?</pre></div>
+<div class="conversation_block user"><pre>six months</pre></div>
+<div class="conversation_block assistant"><pre>Absolutely! Given your timeline, are you already pre-approved for a mortgage or are you planning to begin that process within the next six months?</pre></div>
+<div class="conversation_block user"><pre>its approved</pre></div>
+<div class="conversation_block assistant"><pre>Great, being pre-approved can certainly expedite the process. Considering the current market conditions, are you flexible with your budget if you find a house that you really like but it's slightly above your set budget?</pre></div>
+<div class="conversation_block user"><pre>absoultly fine</pre></div>
+<div class="conversation_block assistant"><pre>Thank you for your response. Lastly, are there any specific features or amenities that you desire in your future house? Things like a large backyard, proximity to schools or certain number of bedrooms?</pre></div>
+<div class="conversation_block user"><pre>Atleast 3 bedroom</pre></div>
+<div class="conversation_block assistant"><pre>Thank you for providing all the necessary details. To answer your original question regarding the current wild housing market and its sustainability for the next four years, it's important to keep in mind that while the housing market can be unpredictable, many experts believe there could be a slowdown in the pace of price increases in the near future. 
+
+However, considering your situation - your pre-approved mortgage, willingness to stretch your budget for the right house, and desired location in Buffalo, it appears you are in a good position to navigate the market. Buffalo has a stable housing market that could potentially offer value for money, especially compared to skyrocketing prices in other cities.
+
+Still, it's always wise to keep a watch on market trends, interest rates, and other economic factors that could influence house prices. Ensure you have a trusted real estate agent who understands the Buffalo market and can guide you through the buying process, especially considering your specific needs of a 3-bedroom house.
+
+While we aren't able to predict exactly what will happen in the next four years, you're taking the right steps to make an informed decision. It's a big decision, and taking the time to do your homework now will undoubtedly pay off in the long run. Good luck with your home buying journey!</pre></div>
+	</div>
+
+
+	<div id="evaluation">
+		<h3>Rating</h3>
+		<div>
+            Rate the <span class="user-conv">User conversation</span> by selecting how much you agree with the statement about the conversation.
+		</div>
+		<div>
+            <div class="radio_button" name="helpfulness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> provided <span class="keyword">helpful solution</span> to the original question the <span class="user-conv">user</span> aksed at the start of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="contribution">
+            	<li class="radio_question">
+                    Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+			<div class="radio_button" name="informativeness">
+            	<li class="radio_question">
+                    The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="repetitiveness">
+            	<li class="radio_question">
+                    The conversation contains repeated information due to poor communication.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="amount">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> asked <span class="keyword">enough follow-up questions</span> to help answer the <span class="user-conv">user's</span> question sufficiently.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+		</div>
+
+        <form id="mturk_form" name="mturk_form">
+            <input name="id" type="hidden" value="11">
+            <input name="user_id" type="hidden" value="19">
+            <input name="case" type="hidden" value="A">
+            <input name="answer" type="hidden">
+        </form>
+
+        <button class="btn btn-block btn-outline-primary btn-sm" id="submit_btn" disabled> Submit </button>
+
+	</div>
+
+</div>
+
+</body>
+</html>

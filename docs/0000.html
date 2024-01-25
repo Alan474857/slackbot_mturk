@@ -1,0 +1,175 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation Quality Measurement</title>
+    
+    <!-- Bootstrap - 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="../notify.js"></script>
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" type="text/css" href="../conversation_evaluation.css">
+    <script type="text/javascript" src="../conversation_evaluation.js"></script>
+    <script type="text/javascript" src="../mturk.js"></script>
+    <script type="text/javascript" src="../lock.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+	<h1 style="text-align:center;">Evaluating the Quality of the Conversation</h1>
+
+	<div id="instruction">
+		<h3>Instruction</h3>
+        <div>
+            Below, you will see a conversation between <span class="bold">an user</span> and <span class="bold">an AI (non-human) assistant</span>. 
+            The user is reaching out to the assistant to ask for help for a question. 
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The user's question is: <span class="bold" style="text-decoration: underline;">"What do you do when you can’t get an anxiety-inducing thought out of your head?"</span>
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The remote assistant put the found information in a Google Doc. The user can view and edit the Google Doc at any time.
+        </div>
+        <br>
+		<ul>
+            <li>
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Contribution, Informativeness, Repetitiveness, and Amount</span>.
+                <ul>
+                    <li><span class="bold">Helpfulness</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Contribution</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the requests. </li>
+                    <li><span class="bold">Repetitiveness</span>: The user communicated with the remote assistant effectively. </li>
+                    <li><span class="bold">Amount</span>: The user expressed the needs or explained the questions with ease. </li>
+                </ul>
+            </li>
+            <li>
+                Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+                <!-- (To present the full context, we show the assistant's responses, too.  -->
+                <span style="color: red; font-weight: 900;">we would like you to assess the quality of both the user's and assistant's messages</span>.) 
+            </li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">30 seconds</span>.</li>
+		</ul>
+	</div>
+
+
+	<div id="conversation">
+		<h3>Conversation</h3>	
+        <div style="margin-bottom: 20px;">
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a remote assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"{{topic}}"</span>
+            Please read the conversation carefully and focus on the <span class="user-conv">User</span> turns. 
+        </div>
+<div class="conversation_block user"><pre>What do you do when you can’t get an anxiety-inducing thought out of your head?</pre></div>
+<div class="conversation_block assistant"><pre>I can certainly help with that. To start, could you please tell me if you've ever sought professional help for your anxiety?</pre></div>
+<div class="conversation_block user"><pre>nope</pre></div>
+<div class="conversation_block assistant"><pre>Understood. Now, could you share a little bit about how these thoughts typically affect your everyday life? Do they interrupt your work or personal time?</pre></div>
+<div class="conversation_block user"><pre>Sometimes I am anxious I may not graduate fluently</pre></div>
+<div class="conversation_block assistant"><pre>I understand how that can be a stressful thought. Have you reached out to anyone for support with these feelings, such as a trusted friend or family member?</pre></div>
+<div class="conversation_block user"><pre>no</pre></div>
+<div class="conversation_block assistant"><pre>Alright, I understand. Could you tell me what coping mechanisms, if any, you've tried so far for dealing with these anxious thoughts?</pre></div>
+<div class="conversation_block user"><pre>basically I have not done anything to solve this problem by now</pre></div>
+<div class="conversation_block assistant"><pre>Thank you for sharing that with me. Finally, are there any particular times of day or circumstances when these anxiety-inducing thoughts tend to occur more frequently?</pre></div>
+<div class="conversation_block user"><pre>Especially before or after a big exam and when I am alone at home at night</pre></div>
+<div class="conversation_block assistant"><pre>To answer your original question, dealing with anxiety-inducing thoughts, especially alone, can be challenging. However, based on what you've shared with me, here are a few strategies you could consider:
+
+1. **Mindfulness and Meditation**: These practices can be helpful in managing anxiety. They involve focusing on the present moment and accepting it without judgment. There are numerous apps and online resources that can guide you through mindfulness exercises and meditations.
+
+2. **Physical Activity**: Regular exercise can be as effective as medication for some people in reducing the symptoms of anxiety. Even a brief walk can be beneficial.
+
+3. **Deep Breathing**: This is a simple yet effective method to control anxiety. When feeling anxious, take slow, deep breaths in through your nose, hold it for a few seconds, and exhale through your mouth. 
+
+4. **Professional Help**: If your anxiety continues or worsens, it would be beneficial to seek professional help. Therapists and counselors are trained to help you understand and manage anxiety.
+
+5. **Connect with Others**: Reach out to trusted friends or family members, even if it's just for a chat about everyday things. You don't have to deal with these feelings alone, and they might be able to offer you support or advice.
+
+Remember, it's perfectly normal and OK to experience anxiety, especially around major events like exams. However, if these thoughts are causing significant distress or impacting your quality of life, I would strongly recommend seeking the help of a professional.</pre></div>
+	</div>
+
+
+	<div id="evaluation">
+		<h3>Rating</h3>
+		<div>
+            Rate the <span class="user-conv">User conversation</span> by selecting how much you agree with the statement about the conversation.
+		</div>
+		<div>
+            <div class="radio_button" name="helpfulness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> provided <span class="keyword">helpful solution</span> to the original question the <span class="user-conv">user</span> aksed at the start of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="contribution">
+            	<li class="radio_question">
+                    Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+			<div class="radio_button" name="informativeness">
+            	<li class="radio_question">
+                    The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="repetitiveness">
+            	<li class="radio_question">
+                    The conversation contains repeated information due to poor communication.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="amount">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> asked <span class="keyword">enough follow-up questions</span> to help answer the <span class="user-conv">user's</span> question sufficiently.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+		</div>
+
+        <form id="mturk_form" name="mturk_form">
+            <input name="id" type="hidden" value="8">
+            <input name="user_id" type="hidden" value="7">
+            <input name="case" type="hidden" value="A">
+            <input name="answer" type="hidden">
+        </form>
+
+        <button class="btn btn-block btn-outline-primary btn-sm" id="submit_btn" disabled> Submit </button>
+
+	</div>
+
+</div>
+
+</body>
+</html>
