@@ -1,0 +1,169 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation Quality Measurement</title>
+    
+    <!-- Bootstrap - 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="https://alan474857.github.io/slackbot_mturk/notify.js"></script>
+
+    <!-- Custom Code -->
+    <link rel="stylesheet" type="text/css" href="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.css">
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/conversation_evaluation.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/mturk.js"></script>
+    <script type="text/javascript" src="https://alan474857.github.io/slackbot_mturk/lock.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+	<h1 style="text-align:center;">Evaluating the Quality of the Conversation</h1>
+
+	<div id="instruction">
+		<h3>Instruction</h3>
+        <div>
+            Below, you will see a conversation between <span class="bold">an user</span> and <span class="bold">an AI (non-human) assistant</span>. 
+            The user is reaching out to the assistant to ask for help for a question. 
+            <div style="display:inline-block; height: 12px; width:100%;"> </div>
+            The user's question to the assistant is: <span class="bold" style="text-decoration: underline;">"Does Eminem sing the Vocals of the Queen sample he used for Beautiful?"</span>
+        </div>
+        <br>
+		<ul>
+            <li>
+                Please read the conversation and rate its quality in terms of <span class="bold">Helpfulness, Contribution, Informativeness, Repetitiveness, and Amount</span>.
+                <ul>
+                    <li><span class="bold">Helpfulness</span>: The assistant gave helpful solution at the end of the conversation. </li>
+                    <li><span class="bold">Contribution</span>: Follow-up questions the assistant asked  contribute to providing well-suited question for the user's situation. </li>
+                    <li><span class="bold">Informativeness</span>: The user sent sufficient information in the conversation for the assistant to provide help. </li>
+                    <li><span class="bold">Repetitiveness</span>: The user communicated with the remote assistant effectively. </li>
+                    <li><span class="bold">Amount</span>: The amount of follow-up questions the assistant asked . </li>
+                </ul>
+            </li>
+            <li>
+                Please focus on both the <span class="user-conv">User</span> and <span class="assistant-conv">Assistant</span> turns. 
+                <!-- (To present the full context, we show the assistant's responses, too.  -->
+                <span style="color: red; font-weight: 900;">We would like you to assess the quality of both the user's and assistant's messages</span>.
+            </li>
+            <li>Please read the conversation carefully. You will be able to submit the evaluation after <span style="color:red; font-weight:900;">30 seconds</span>.</li>
+		</ul>
+	</div>
+
+
+	<div id="conversation">
+		<h3>Conversation</h3>	
+        <div style="margin-bottom: 20px;">
+            This is the conversation between <span class="bold">a user</span> and <span class="bold">a remote assistant</span> on collecting information about 
+            <span class="bold" style="text-decoration: underline;">"{{topic}}"</span>
+            Please read the conversation carefully and focus on the <span class="user-conv">User</span> turns. 
+        </div>
+<div class="conversation_block user"><pre>Does Eminem sing the Vocals of the Queen sample he used for Beautiful?</pre></div>
+<div class="conversation_block assistant"><pre>Of course! Just to clarify, are you talking about the song "Beautiful" from Eminem's album "Relapse"?</pre></div>
+<div class="conversation_block user"><pre>I'm not familiar with this song or artist, I'm from india, I saw this song somewhere from the internet, Asking curious to you!</pre></div>
+<div class="conversation_block assistant"><pre>Absolutely! Let's see if we can find the answer together. In the song you mentioned, did you recognize any particular lyrics or phrases that stood out to you?</pre></div>
+<div class="conversation_block user"><pre>I'm not familiar with eminem and that song</pre></div>
+<div class="conversation_block assistant"><pre>Understood. Since you're not familiar with the song or the artist, let's try a different approach. Can you remember where you heard or saw this song? For example, was it in a movie, on a website, or somewhere else?</pre></div>
+<div class="conversation_block user"><pre>From the internet</pre></div>
+<div class="conversation_block assistant"><pre>I see, that's very helpful. Could you perhaps remember any other details about the song? Maybe specific words, the overall theme or message, or how the music made you feel?</pre></div>
+<div class="conversation_block user"><pre>No I can't remember</pre></div>
+<div class="conversation_block assistant"><pre>I understand. Considering your query, I was wondering if you recalled the context in which the song was mentioned or used on the internet. Was it discussed in an article, a forum, or a video, perhaps?</pre></div>
+<div class="conversation_block user"><pre>No I can't able to recollect it</pre></div>
+<div class="conversation_block assistant"><pre>To answer your original question, Eminem's song "Beautiful" does contain a sample from the song "Reaching Out," which was performed by the band Queen + Paul Rodgers, not Queen. However, Eminem does not sing the vocals for this sample. The vocals are from the original song by Queen + Paul Rodgers. I hope this answers your question!</pre></div>
+	</div>
+
+
+	<div id="evaluation">
+		<h3>Rating</h3>
+		<div>
+            Rate the <span class="user-conv">User conversation</span> by selecting how much you agree with the statement about the conversation.
+		</div>
+		<div>
+            <div class="radio_button" name="helpfulness">
+            	<li class="radio_question">
+                    The <span class="assistant-conv">assistant</span> provided <span class="keyword">helpful solution</span> to the original question the <span class="user-conv">user</span> aksed at the start of the conversation.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="contribution">
+            	<li class="radio_question">
+                    maxim of quantity
+                    The <span class="assistant-conv">assistant</span> asked the <span class="keyword">appropriate amount</span> of questions necessary for the purpose of the conversation.
+                    <!-- Follow-up questions the <span class="assistant-conv">assistant</span> asked <span class="keyword">contribute</span> to providing an answer well-suited for the <span class="user-conv">user's</span> situation. -->
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+			<div class="radio_button" name="informativeness">
+            	<li class="radio_question">
+                    maxim of relation
+                    The <span class="assistant-conv">assistant</span> asked for information that is <span class="keyword">relevant</span> to the purpose of the conversation and omitted irrelevant information.
+                    <!-- The <span class="user-conv">user</span> sent <span class="keyword">sufficient information</span> in the requests for the assistant to help answer the question. -->
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="repetitiveness">
+            	<li class="radio_question">
+                    maxim of manner
+                    The assistant's messages does not include repeating information and are clear and easy to understand.
+                    <!-- The conversation contains repeated information due to poor communication. -->
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+
+            <div class="radio_button" name="amount">
+            	<li class="radio_question">
+                    ambiguous and underspecified utterance handling
+                    Whenencounter ambiguous or underspecified utterace, they provide feedback to the user their interpretation of the utterance and how it was handled.
+                    The <span class="assistant-conv">assistant</span> asked <span class="keyword">enough follow-up questions</span> to help answer the <span class="user-conv">user's</span> question sufficiently.
+                </li>
+                <div class="radio_answer" value="0">Strongly Disagree</div>
+                <div class="radio_answer" value="1">Disagree</div>
+                <div class="radio_answer" value="2">Neutral</div>
+                <div class="radio_answer" value="3">Agree</div>
+                <div class="radio_answer" value="4">Strongly Agree</div>
+        	</div>
+		</div>
+
+        <form id="mturk_form" name="mturk_form">
+            <input name="id" type="hidden" value="40">
+            <input name="user_id" type="hidden" value="10">
+            <input name="case" type="hidden" value="A">
+            <input name="answer" type="hidden">
+        </form>
+
+        <button class="btn btn-block btn-outline-primary btn-sm" id="submit_btn" disabled> Submit </button>
+
+	</div>
+
+</div>
+
+</body>
+</html>
